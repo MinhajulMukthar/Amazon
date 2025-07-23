@@ -105,6 +105,15 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         quantity: 1,
       });
     }
-    console.log(cart);
+
+    let cartQuantity = 0;
+
+    cart.forEach((item) => {
+      cartQuantity += item.quantity;
+    })
+
+    // Calculated the quantity using for each , incremented and stored in the cardQuantity after that we updated through Js using DOM`
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
   });
 });
