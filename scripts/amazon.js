@@ -1,28 +1,28 @@
-const products = [{
-  image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-  name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-  rating: {
-    stars: 4.5,
-    counts: 87
-  },
-  priceCents: 1090,
-}, {
-  image: "images/products/intermediate-composite-basketball.jpg",
-  name: " Intermediate Size Basketball",
-  rating: {
-    stars: 4,
-    counts: 127
-  },
-  priceCents: 2095,
-}, {
-  image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
-  name: "Adults Plain Cotton T-Shirt - 2 Pack",
-  rating: {
-    stars: 4.5,
-    counts: 56
-  },
-  priceCents: 799,
-}];
+// const products = [{
+//   image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+//   name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+//   rating: {
+//     stars: 4.5,
+//     counts: 87
+//   },
+//   priceCents: 1090,
+// }, {
+//   image: "images/products/intermediate-composite-basketball.jpg",
+//   name: " Intermediate Size Basketball",
+//   rating: {
+//     stars: 4,
+//     counts: 127
+//   },
+//   priceCents: 2095,
+// }, {
+//   image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+//   name: "Adults Plain Cotton T-Shirt - 2 Pack",
+//   rating: {
+//     stars: 4.5,
+//     counts: 56
+//   },
+//   priceCents: 799,
+// }];
 
 // Creating an varibale to save all the data about product and then display on it
 let productHTML = '';
@@ -45,7 +45,7 @@ products.forEach((product) => {
           class="product-rating-stars"
           src="images/ratings/rating-${product.rating.stars * 10}.png"
         />
-        <div class="product-rating-count link-primary">${product.rating.counts}</div>
+        <div class="product-rating-count link-primary">${product.rating.count}</div>
       </div>
 
       <div class="product-price">$${(product.priceCents / 100).toFixed(2)}</div>
@@ -72,14 +72,39 @@ products.forEach((product) => {
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary">Add to Cart</button>
+      <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name ="${product.name}">Add to Cart</button>
     </div>
   `;
 
-  // console.log(productHTML);
+  // console.log(productHTML);  
 })
-console.log(productHTML);
 
 // Selecting the HTML main element where the products code is written select the root element to display oroduct through Js
 // After selecting the root element we are updating the code with productHTML where we store & Generated through Js
-document.querySelector('.js-product-grid').innerHTML = productHTML; 
+document.querySelector('.js-product-grid').innerHTML = productHTML;
+
+
+// Adding Interactive to the Add to cart button so first we select the element using class name and add interactivity using DOM
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+  button.addEventListener('click', () => {
+    let productName = button.dataset.productName;
+
+    // Looping through cart to check the product is already exist if exist then just increment the quantity += 1
+    let alreadyExist;
+    cart.forEach((item) => {
+      if (productName === item.productName) {
+        alreadyExist = item;
+      }
+    });
+
+    if (alreadyExist) {
+      alreadyExist.quantity += 1;
+    } else {
+      cart.push({
+        productName: productName,
+        quantity: 1,
+      });
+    }
+    console.log(cart);
+  });
+});
