@@ -72,7 +72,7 @@ products.forEach((product) => {
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name ="${product.name}">Add to Cart</button>
+      <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id ="${product.id}">Add to Cart</button>
     </div>
   `;
 
@@ -87,12 +87,12 @@ document.querySelector('.js-product-grid').innerHTML = productHTML;
 // Adding Interactive to the Add to cart button so first we select the element using class name and add interactivity using DOM
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
   button.addEventListener('click', () => {
-    let productName = button.dataset.productName;
+    let productId = button.dataset.productId;
 
     // Looping through cart to check the product is already exist if exist then just increment the quantity += 1
     let alreadyExist;
     cart.forEach((item) => {
-      if (productName === item.productName) {
+      if (productId === item.productId) {
         alreadyExist = item;
       }
     });
@@ -101,7 +101,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
       alreadyExist.quantity += 1;
     } else {
       cart.push({
-        productName: productName,
+        productId: productId,
         quantity: 1,
       });
     }
