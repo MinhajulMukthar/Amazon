@@ -1,3 +1,14 @@
+// Importing the cart variable from cart.js
+
+import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
+
+
+// IF we create an cart variable here then we can have naming problem cuz the add to cart is using the cart varaible array to store the cart information.
+// So to resolve the issue we use modeule here 
+
+
+
 // const products = [{
 //   image: "images/products/athletic-cotton-socks-6-pairs.jpg",
 //   name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
