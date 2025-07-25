@@ -1,0 +1,8 @@
+Till Now I have implemented Amazon Home page and Cart Page  through JS 
+And also write an separate code to format currency / money in dollars to show two decimal last so for that I create an separate folder Utils and there I create Money.js to write an code for formatting an money
+
+
+--------------------------------------------
+Now I'm facing an a problem on cart summary shipping delivery features shares same value like for example when I select free shipping the other is also select automatically so I need to resolve this issue 
+So every radio share the same name that's why the problem is displaying
+To resolve the issue we need to give unique name or id So here I can use products Id which is unique for every product.    

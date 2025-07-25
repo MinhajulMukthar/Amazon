@@ -2,6 +2,7 @@
 
 import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
 
 
 // IF we create an cart variable here then we can have naming problem cuz the add to cart is using the cart varaible array to store the cart information.
@@ -59,7 +60,7 @@ products.forEach((product) => {
         <div class="product-rating-count link-primary">${product.rating.count}</div>
       </div>
 
-      <div class="product-price">$${(product.priceCents / 100).toFixed(2)}</div>
+      <div class="product-price">$${formatCurrency(product.priceCents)}</div>
 
       <div class="product-quantity-container">
         <select>
