@@ -1,6 +1,6 @@
 // Importing the cart variable from cart.js
 
-import { cart } from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 
 
@@ -101,30 +101,17 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     let productId = button.dataset.productId;
 
     // Looping through cart to check the product is already exist if exist then just increment the quantity += 1
-    let alreadyExist;
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        alreadyExist = item;
-      }
-    });
-
-    if (alreadyExist) {
-      alreadyExist.quantity += 1;
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1,
-      });
-    }
-
-    let cartQuantity = 0;
-
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    })
-
-    // Calculated the quantity using for each , incremented and stored in the cardQuantity after that we updated through Js using DOM`
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    addToCart(productId);
+    displayAddToCart();
 
   });
 });
+
+function displayAddToCart() {
+  let cartQuantity = 0;
+  cart.forEach((item) => {
+    cartQuantity += item.quantity;
+  })
+  // Calculated the quantity using for each , incremented and stored in the cardQuantity after that we updated through Js using DOM`
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
