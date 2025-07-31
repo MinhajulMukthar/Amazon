@@ -91,7 +91,7 @@ class Cart {
 const cart = new Cart('cart-oop');
 const busniessCart = new Cart('cart-business');
 
-// No use of intilaizig code here we can use constrcutor here 
+// No use of intilaizig code here we can use constrcutor here
 // cart.cartkey = 'cart-oop';
 // busniessCart.cartkey = 'cart-business';
 
@@ -103,5 +103,5 @@ const busniessCart = new Cart('cart-business');
 // cart.addToCart('83d4ca15-0f35-48f5-b7a3-1ea210004f2e');
 
 // console.log(cart.#cartkey);
-console.log(cart);
-console.log(busniessCart);
+// console.log(cart);
+// console.log(busniessCart);
